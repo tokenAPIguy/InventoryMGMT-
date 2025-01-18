@@ -1,6 +1,37 @@
 @API_HostAddress = http://localhost:5094
 
-GET {{API_HostAddress}}/weatherforecast/
+GET {{API_HostAddress}}/products/
 Accept: application/json
 
 ###
+
+GET {{API_HostAddress}}/products/1
+Content-Type: application/json
+
+###
+
+POST {{API_HostAddress}}/products/
+Content-Type: application/json
+
+{
+  "name": "test",
+  "categoryId": "test",
+  "description": "test"
+}
+
+###
+
+PUT {{API_HostAddress}}/products/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "test",
+  "categoryId": "test",
+  "description": "update"
+}
+
+###
+
+DELETE {{API_HostAddress}}/products/6
+Content-Type: application/json

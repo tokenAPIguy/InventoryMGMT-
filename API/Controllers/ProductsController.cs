@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class ProductsController(ProductService productService) : ControllerBase {
     [HttpGet("{id}")]
     public async Task<Product?> Get(int id) {

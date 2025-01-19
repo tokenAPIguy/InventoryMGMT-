@@ -1,0 +1,26 @@
+﻿@model Frontend.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category ID</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products) {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.CategoryId</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+            </tr>    
+        }
+    </tbody>
+</table>

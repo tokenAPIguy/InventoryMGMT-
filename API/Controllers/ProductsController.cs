@@ -7,14 +7,16 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProductsController(ProductService productService) : ControllerBase {
+public class ProductsController(ProductService productService, ILogger<ProductsController> logger) : ControllerBase {
     [HttpGet("{id}")]
     public async Task<Product?> Get(int id) {
+        logger.LogInformation($"Getting product with id {id}");
         return await productService.GetProductAsync(id);
     }
     
     [HttpGet]
     public async Task<ActionResult<List<Product>>> GetAll(string? categoryId = null) {
+        logger.LogInformation($"Getting all products");
         return await productService.GetAllProductsAsync(categoryId);
     }
     

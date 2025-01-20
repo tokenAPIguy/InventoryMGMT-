@@ -5,12 +5,12 @@ Accept: application/json
 
 ###
 
-GET {{API_HostAddress}}/products/1
+GET {{API_HostAddress}}/api/products/2
 Content-Type: application/json
 
 ###
 
-POST {{API_HostAddress}}/products/
+POST {{API_HostAddress}}/api/products/
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{API_HostAddress}}/products/1
+PUT {{API_HostAddress}}/api/products/1
 Content-Type: application/json
 
 {
@@ -33,5 +33,5 @@ Content-Type: application/json
 
 ###
 
-DELETE {{API_HostAddress}}/products/6
+DELETE {{API_HostAddress}}/api/products/6
 Content-Type: application/json

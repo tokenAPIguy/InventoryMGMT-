@@ -401,4 +401,4 @@ FodyWeavers.xsd
 # Custom
 .idea/
 *.db
-
+logs/

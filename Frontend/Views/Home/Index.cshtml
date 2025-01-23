@@ -8,9 +8,9 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Category ID</th>
+            <th>Category</th>
             <th>Name</th>
-            <th>Description</th>
+            <th>In Stock</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +20,9 @@
                 <td>@product.CategoryId</td>
                 <td>@product.Name</td>
                 <td>@product.Description</td>
+                <td>
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@product.Id">Update</a>
+                </td>
             </tr>    
         }
     </tbody>

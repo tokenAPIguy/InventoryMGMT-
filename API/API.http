@@ -5,33 +5,37 @@ Accept: application/json
 
 ###
 
-GET {{API_HostAddress}}/products/1
+GET {{API_HostAddress}}/api/products/1
 Content-Type: application/json
 
 ###
 
-POST {{API_HostAddress}}/products/
+POST {{API_HostAddress}}/api/products/
 Content-Type: application/json
 
 {
-  "name": "test",
-  "categoryId": "test",
-  "description": "test"
+  "name": "Lamp",
+  "categoryId": "Home/Furniture",
+  "description": "A cozy lamp for reading",
+  "inStock": true,
+  "quantity": 40
 }
 
 ###
 
-PUT {{API_HostAddress}}/products/1
+PUT {{API_HostAddress}}/api/products/14
 Content-Type: application/json
 
 {
-  "id": 1,
+  "id": 14,
   "name": "test",
   "categoryId": "test",
-  "description": "update"
+  "description": "update",
+  "inStock": true,
+  "quantity": 69
 }
 
 ###
 
-DELETE {{API_HostAddress}}/products/6
+DELETE {{API_HostAddress}}/api/products/6
 Content-Type: application/json

@@ -19,5 +19,17 @@ public class ApplicationDbContext : DbContext {
         modelBuilder.Entity<Product>()
             .Property(p => p.CategoryId)
             .IsRequired();
+        
+        modelBuilder.Entity<Product>()
+            .Property(p => p.Description)
+            .IsRequired();
+        
+        modelBuilder.Entity<Product>()
+            .Property(p => p.Quantity)
+            .IsRequired();
+        
+        modelBuilder.Entity<Product>()
+            .Property(p => p.InStock)
+            .IsRequired();
     }
 }

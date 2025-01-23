@@ -1,0 +1,26 @@
+@model Frontend.Models.ProductViewModel
+
+<div class="row">
+    <div class="col-6"></div>
+    <div class="col-6">
+        <form class="form-control" asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Product.Id">
+            <input type="hidden" asp-for="Product.Id" />
+            
+            <label asp-for="Product.Name"></label>
+            <input class="text-body-tertiary" asp-for="Product.Name">
+
+            <label asp-for="Product.CategoryId">Category</label>
+            <select asp-for="Product.CategoryId" asp-items="Model.ProductCategories">
+                <option value=""></option>
+            </select>
+            
+            <label asp-for="Product.Description"></label>
+            <input class="text-body-tertiary" asp-for="Product.Description">
+
+            <label asp-for="Product.Quantity">Quantity</label>
+            <input type="number" asp-for="Product.Quantity">
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>

@@ -15,6 +15,10 @@ public class Product {
     [MaxLength(500)]
     public string Description { get; set; }
 
+    public bool InStock { get; set; } = true;
+
+    public int Quantity { get; set; }
+    
     public Product() { }
     
     public Product(string name, string categoryId) {

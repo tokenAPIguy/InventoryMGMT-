@@ -19,7 +19,17 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Logs\" />
       <Folder Include="Migrations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="logs\event_log20250120.json" />
+      <_ContentIncludedByDefault Remove="logs\event_log20250122.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Logging\Logging.csproj" />
     </ItemGroup>
 
 </Project>

@@ -6,25 +6,58 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Services;
 
 public class ProductService(ApplicationDbContext context) {
+    private readonly Logging.Logger logger = Logging.Logger.Default;
+    
     // GET
     public async Task<Product?> GetProductAsync(int id) {
-        // Add nullcheck
-        return await context.Products.FindAsync(id);
+        string path = $"GET api/products/{id}";
+        Product? response = await context.Products.FindAsync(id);
+
+        if (response == null) {
+            logger.Warning($"HTTP 404 - {path}");
+            return null;
+        }
+        
+        logger.Information($"HTTP 200 - {path}");
+        return response;
     }
     
     // GET All
-    public async Task<List<Product>> GetAllProductsAsync(string? categoryId) {
+    public async Task<List<Product>?> GetAllProductsAsync(string? categoryId) {
+        string path = $"GET api/products/?{categoryId}";
+        List<Product> response;
+
         if (categoryId != null) {
-            return await context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+            response = await context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+        } else {
+            response = await context.Products.ToListAsync();
         }
-        return await context.Products.ToListAsync();
+
+        if (!response.Any()) {
+            logger.Warning($"HTTP 404 - {path}");
+            return null;
+        }
+        
+        logger.Information($"HTTP 200 - {path}");
+        return response;
     }
 
     // POST
     public async Task<Product> CreateProductAsync(Product product) {
-        context.Products.Add(product);        
+        string path = $"POST api/products/";
+        
+        var resposne = await context.Products.AddAsync(product);
         await context.SaveChangesAsync();
         return product;
+        
+        // try {
+        //     context.Products.Add(product);        
+        //     await context.SaveChangesAsync();
+        //     return product;
+        // }
+        // catch (Exception e) {
+        //     logger.Error($"HTTP 500 - {path} | {e.Message}");
+        // }
     }
     
     // PUT 
@@ -41,6 +74,7 @@ public class ProductService(ApplicationDbContext context) {
         Product? product = await context.Products.FindAsync(id);
 
         if (product == null) {
+            logger.Warning($"HTTP 404 - Product {id} does not exist");
             return false;
         }
         

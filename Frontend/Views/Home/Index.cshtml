@@ -1,29 +1,52 @@
 ﻿@model Frontend.Models.ProductViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inventory Management";
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Category</th>
-            <th>Name</th>
-            <th>In Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model.Products) {
-            <tr>
-                <td>@product.Id</td>
-                <td>@product.CategoryId</td>
-                <td>@product.Name</td>
-                <td>@product.Description</td>
-                <td>
-                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@product.Id">Update</a>
-                </td>
-            </tr>    
-        }
-    </tbody>
-</table>
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5">Product Inventory</h1>
+        <button class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i>Add Product
+        </button>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                    <tr>
+                        <th scope="col" class="text-muted">#ID</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" class="text-end">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var product in Model.Products) {
+                        <tr>
+                            <td class="text-muted fw-light">@product.Id</td>
+                            <td><span class="badge bg-secondary">@product.CategoryId</span></td>
+                            <td class="fw-medium">@product.Name</td>
+                            <td class="text-truncate" style="max-width: 300px;">@product.Description</td>
+                            <td>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

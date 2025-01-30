@@ -6,7 +6,8 @@ using Frontend.Services;
 namespace Frontend.Controllers;
 
 public class HomeController(ApiService service) : Controller {
-    [HttpGet("products/")]
+    
+    [HttpGet]
     public async Task<IActionResult> Index(ProductViewModel viewModel) {
         viewModel.Products = await service.GetProductsAsync();
         return View(viewModel);
